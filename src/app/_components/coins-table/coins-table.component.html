@@ -2,7 +2,7 @@
 <section id="coins-table">
     <div class="row">
         <div class="col s12">
-            <table id="coins-list" class="bordered highlight vertical-responsive-table">
+            <table id="coins-list" class="bordered highlight vertical-responsive-table dataTable">
                 <thead>
                     <tr>
                         <th>
@@ -26,17 +26,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr id="Cryptocurrency-{{ data.short }}" class="coin-row coin-row-BTC" *ngFor="let data of data; let i = index">
+                    <tr id="Cryptocurrency-{{ data.short }}" class="coin-row coin-row-{{ data.short }}" *ngFor="let data of data; let i = index">
                         <td data-title="Cryptocurrency">
                             <span class="coin-number">{{ i + 1 }}</span>
                             <a href="#">
-                                <img src="assets/tpl/images/coins/thumb30/1182-BTC.png" alt="Bitcoin" title="Bitcoin">
+                                <span class="sprite sprite-{{ data.long | lowercase }} small_coin_logo"></span>
+                            
                             </a>
                             <span>
                                 <a href="#">{{ data.long }}</a>
                             </span>
                         </td>
-                        <td class="right-align price" data-title="Price">
+                        <td class="right-align price" data-title="Price" [attr.data-usd]="data.price">
                             <sup>$</sup>
                             <span class="coin-price-value">
                                 {{ data.price | number : '1.2-4' }}
