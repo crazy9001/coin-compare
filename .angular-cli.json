@@ -21,7 +21,8 @@
       "styles": [
         "styles.css",
         "assets/tpl/css/blue.css",
-        "assets/tpl/css/select2.min.css"
+        "assets/tpl/css/select2.min.css",
+        "assets/tpl/css/ember.css"
       ],
       "scripts": [
         "assets/tpl/js/jquery-3.2.1.min.js",

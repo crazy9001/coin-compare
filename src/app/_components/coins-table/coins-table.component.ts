@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-
+import * as $ from 'jquery';
 import * as io from 'socket.io-client';
 
 @Component({
@@ -37,6 +37,7 @@ export class CoinsTableComponent implements OnInit {
         });
     }
     updateData(data) {
+        console.log(data);
         var coin: string = 'Cryptocurrency-' + data.coin;
         var coin_data: any = data.msg;
         var _coinTable = $('#coins-list');
@@ -46,15 +47,16 @@ export class CoinsTableComponent implements OnInit {
         var supply = _coinTable.find("tr#" + coin + " .supply");
         var volume = _coinTable.find("tr#" + coin + " .volume");
         var capital = _coinTable.find("tr#" + coin + " .market_capital");
-        var _price = formatter.format(coin_data.price);
-
-        (volume).html(formatter.format(coin_data.volume), 0);
-        (capital).html(formatter.format(coin_data.mktcap), 0);
-        (supply).html(formatter.format(coin_data.supply));
+        var _price = this.formatter.format(coin_data.price);
+        //var class = coin_data.cap24hrChange >= 0 ? 'increment' : 'decrement';
+        (volume).html(this.formatter.format(coin_data.volume), 0);
+        (capital).html(this.formatter.format(coin_data.mktcap), 0);
+        (supply).html(this.formatter.format(coin_data.supply));
+        (change).html((coin_data.perc));
         (price).html(_price);
     }
 
-    var formatter = new Intl.NumberFormat('en-US', {
+    formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
         minimumFractionDigits: 2,
