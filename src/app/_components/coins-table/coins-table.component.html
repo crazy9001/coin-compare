@@ -2,7 +2,7 @@
 <section id="coins-table">
     <div class="row">
         <div class="col s12">
-            <table datatable id="coins-list" class="bordered highlight vertical-responsive-table">
+            <table id="coins-list" class="bordered highlight vertical-responsive-table">
                 <thead>
                     <tr>
                         <th>
@@ -23,13 +23,10 @@
                         <th class="right-align">
                             Market cap
                         </th>
-                        <th class="right-align">
-                            24h Performance
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="coin-row coin-row-BTC" *ngFor="let data of data; let i = index">
+                    <tr id="Cryptocurrency-{{ data.short }}" class="coin-row coin-row-BTC" *ngFor="let data of data; let i = index">
                         <td data-title="Cryptocurrency">
                             <span class="coin-number">{{ i + 1 }}</span>
                             <a href="#">
@@ -39,35 +36,33 @@
                                 <a href="#">{{ data.long }}</a>
                             </span>
                         </td>
-                        <td class="right-align" data-title="Price">
+                        <td class="right-align price" data-title="Price">
                             <sup>$</sup>
                             <span class="coin-price-value">
-                                {{ data.price | number : '1.2-2' }}
+                                {{ data.price | number : '1.2-4' }}
                             </span>
                         </td>
-                        <td class="right-align" data-title="24h % Change">
+                        <td class="right-align change" data-title="24h % Change">
                             <span class="coin-change_pct-value change-down">
                                 {{ data.perc }}%
                             </span>
                         </td>
-                        <td class="right-align" data-title="Supply">
+                        <td class="right-align supply" data-title="Supply">
                             <span class="coin-supply-value">
                                 {{ data.supply | number : '1.2-2' }}
                             </span>
                             {{ data.short }}
                         </td>
-                        <td class="right-align" data-title="Volume">
+                        <td class="right-align volume" data-title="Volume">
                             <span class="coin-volume-value">
                                 {{ data.volume | number : '1.2-2' }}
                             </span>
                         </td>
-                        <td class="right-align" data-title="Market cap">
+                        <td class="right-align market_capital" data-title="Market cap">
                             <sup>$</sup>
                             <span class="coin-market_cap-value">
                                 {{ data.mktcap | number : '1.2-2' }}
                             </span>
-                        </td>
-                        <td class="performance-sparkline right-align" data-title="24h Performance">
                         </td>
                     </tr>
                 </tbody>
